@@ -9,10 +9,11 @@ var initialRepositoryState = {
 };
 
 var hotColdReducer = function(state, action) {
-    state = state || initialRepositoryState;
+    let nextState = Object.assign({}, state || initialState)
     if (action.type === actions.GEN_NUMBER) {
-        return state.number = Math.floor((Math.random() * 100) + 1);
+        nextState.number = Math.floor((Math.random() * 100) + 1);
     }
+
 
     else if (action.type === actions.GUESS_NUMBER) {
         return state.guess = action.guess;
@@ -57,7 +58,7 @@ var hotColdReducer = function(state, action) {
        state.number = null;
     }
 
-    return state;
+    return nextState;
 };
 
 exports.hotColdReducer = hotColdReducer;
