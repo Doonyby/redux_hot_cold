@@ -17,7 +17,7 @@ var hotColdReducer = function(state, action) {
     }
 
     else if (action.type === actions.COMPARE_GUESSES) {
-        if (state.guesses.indexOf(parseInt(state.guess)) !== -1) {
+        if (state.guesses.indexOf(parseInt(state.guess)) == -1) {
             console.log('num not in guesses array, posting now');
             nextState.guesses = nextState.guesses.concat(parseInt(state.guess));
         } else {
@@ -39,14 +39,11 @@ var hotColdReducer = function(state, action) {
         else if (diff > 20) {
             nextState.result = 'Cold';
         }
-        else if (diff > 19) {
+        else if (diff > 10) {
             nextState.result = 'Warm';
         }
-        else if (diff > 9) {
+        else if (diff > 5) {
             nextState.result = 'Hot';
-        }
-        else if (diff > 4) {
-            nextState.result = 'Very Hot';
         }
         else {
             nextState.result = 'Fire';

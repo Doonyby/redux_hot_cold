@@ -7,7 +7,6 @@ var NewGame = React.createClass({
 		console.log('reseting game');
 		this.props.dispatch(actions.resetGame());
 	},
-
 	render: function() {
 		return (
 			<div className="newGame" key="newGameDiv">
@@ -19,5 +18,4 @@ var NewGame = React.createClass({
 });
 
 var Container = connect()(NewGame);
-
 module.exports = Container;

@@ -5,15 +5,20 @@ var actions = require('../actions/index');
 
 var Status = React.createClass({
 	render: function() {
+		var result;
+		if (this.props.currentResult) {
+			result = this.props.currentResult;
+		}
+		else {
+			result = 'Make a Guess!'
+		}
 		return (
 			<div className="status" key="statusDiv">
-				<h3>{this.props.title}</h3>
-				<h4>{this.props.currentResult}</h4>
+				<h4>{result}</h4>
 			</div>
 		);
 	}
 });
 
 var Container = connect()(Status);
-
 module.exports = Container;
