@@ -10,29 +10,17 @@ var Provider = require('react-redux').Provider;
 
 var store = require('./store');
 var Game = require('./components/game');
-var Instructions = require('./components/game');
-
+var Instructions = require('./components/instructions');
 
 document.addEventListener('DOMContentLoaded', function() {
     ReactDOM.render(
-	        <Provider store={store}>
-	            <Game />
-	        </Provider>,
+    <Provider store={store}>	
+	    <Router history={hashHistory}> 
+	    	<Route path="/" component={Game} />
+	    	<Route path="/instructions" component={Instructions} />
+	    </Router>
+    </Provider> ,
         document.getElementById('app')
     );
 });
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     ReactDOM.render(
-//     <Router history={hashHistory}> 
-//     	<Route path="/" component={Game}>
-// 	        <Provider store={store}>
-// 	            <Game />
-// 	        </Provider>  
-//     	</Route>
-//     	<Route path="/instructions" component={Instructions} />
-//     </Router>,
-//         document.getElementById('app')
-//     );
-// });
 
