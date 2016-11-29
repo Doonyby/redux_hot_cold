@@ -1,9 +1,8 @@
 // generate a random number
 var GEN_NUMBER = 'GEN_NUMBER';
-var genNumber = function(number) {
+var genNumber = function() {
 	return {
-		type: GEN_NUMBER,
-		number: number
+		type: GEN_NUMBER
 	}
 };
 // guess a number
@@ -16,33 +15,32 @@ var guessNumber = function(guess) {
 };
 // check if guessed number has been guessed
 var COMPARE_GUESSES = 'COMPARE_GUESSES';
-var compareGuesses = function(guess) {
+var compareGuesses = function() {
 	return {
-		type: COMPARE_GUESSES,
-		guess: guess
+		type: COMPARE_GUESSES
 	}
 };
 // check if the number is correct
 var CHECK_CORRECT = 'CHECK_CORRECT';
-var checkCorrect = function(guess, number) {
+var checkCorrect = function() {
 	return {
-		type: CHECK_CORRECT,
-		guess: guess,
-		number: number
+		type: CHECK_CORRECT
 	}
 };
 // evaluate how close number is if not correct
 var EVAL_GUESS = 'EVAL_GUESS';
-var evalGuess = function(guess, number) {
+var evalGuess = function() {
 	return {
-		type: EVAL_GUESS,
-		guess: guess,
-		number: number
+		type: EVAL_GUESS
 	}
 };
-//display hot or cold
-// display guessed number in the bottom so you don't guess again.
-
+//count and display how many guesses
+var COUNT_GUESS = 'COUNT_GUESS';
+var countGuess = function() {
+	return {
+		type: COUNT_GUESS
+	}
+}
 // reset number guess and guesses in game.
 var RESET_GAME = 'RESET_GAME';
 var resetGame = function() {
@@ -63,3 +61,5 @@ exports.EVAL_GUESS = EVAL_GUESS;
 exports.evalGuess = evalGuess;
 exports.RESET_GAME = RESET_GAME;
 exports.resetGame = resetGame;
+exports.COUNT_GUESS = COUNT_GUESS;
+exports.countGuess = countGuess;
