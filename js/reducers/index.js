@@ -5,7 +5,7 @@ var initialRepositoryState = {
     guess: null,
     guesses: [],
     win: false,
-    status: '',
+    result: '',
     count: 0
 };
 
@@ -17,33 +17,39 @@ var hotColdReducer = function(state, action) {
     }
 
     else if (action.type === actions.COMPARE_GUESSES) {
-        if (state.guesses.indexOf(state.guess) === -1) {
-            nextState.guesses.concat(action.guess);
+        if (state.guesses.indexOf(parseInt(state.guess)) !== -1) {
+            console.log('num not in guesses array, posting now');
+            nextState.guesses = nextState.guesses.concat(parseInt(state.guess));
+        } else {
+            console.log('num exists already');
         }
     }
 
     else if (action.type === actions.CHECK_CORRECT) {
-        if (state.number === state.guess) {
+        if (state.number == state.guess) {
             nextState.win = true;
         }
     }
 
     else if (action.type === actions.EVAL_GUESS) {
         var diff = Math.abs(state.guess - state.number);
-        if (diff > 20) {
-            nextState.status = 'cold';
+        if (state.guess == state.number) {
+            nextState.result = 'You Win!!!'
+        }
+        else if (diff > 20) {
+            nextState.result = 'Cold';
         }
         else if (diff > 19) {
-            nextState.status = 'warm';
+            nextState.result = 'Warm';
         }
         else if (diff > 9) {
-            nextState.status = 'hot';
+            nextState.result = 'Hot';
         }
         else if (diff > 4) {
-            nextState.status = 'very hot';
+            nextState.result = 'Very Hot';
         }
         else {
-            nextState.status = 'fire';
+            nextState.result = 'Fire';
         }
     }
 
@@ -55,8 +61,9 @@ var hotColdReducer = function(state, action) {
        nextState.guess = null;
        nextState.guesses = [];
        nextState.win = false;
-       nextState.status = '';
+       nextState.result = '';
        nextState.number = Math.floor((Math.random() * 100) + 1);
+       nextState.count = 0;
     }
 
     return nextState;

@@ -9,16 +9,14 @@ var NewGame = require('./new-game');
 var actions = require('../actions/index');
 
 var Game = React.createClass({
-	resetGame: function() {
-		console.log('reseting game');
-	},
+
 
 	render: function() {
-		console.log(this.props);
+		console.log(this.props.game);
 		return (
-			<div className="game" key="gameDiv" onClick={this.resetGame}>
+			<div className="game" key="gameDiv">
 				<h1>Hot or Cold</h1>
-				<GameContainer key="none" title={this.props.game.number} />
+				<GameContainer key="none" game={this.props.game} title={this.props.game.number} />
 				<NewGame key="newGame" title="new game button"/>
 				<button><Link to={'/instructions'}>Instructions</Link></button>
 			</div>
@@ -35,6 +33,4 @@ var mapStateToProps = function(state, props) {
 };
 
 var Container = connect(mapStateToProps)(Game);
-
-
 module.exports = Container;
