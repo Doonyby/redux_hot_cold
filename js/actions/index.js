@@ -31,7 +31,8 @@ var checkCorrect = function() {
 var EVAL_GUESS = 'EVAL_GUESS';
 var evalGuess = function() {
 	return {
-		type: EVAL_GUESS
+		type: EVAL_GUESS,
+		// result: result
 	}
 };
 //count and display how many guesses
@@ -48,7 +49,37 @@ var resetGame = function() {
 		type: RESET_GAME
 	}
 }
+// // get fewest guesses info.
+// var FETCH_FEWEST_GUESSES = 'FETCH_FEWEST_GUESSES';
+// var fetchFewestGuesses = function() {
+// 	return {
+// 		type: FETCH_FEWEST_GUESSES
+// 	}
+// }
+// // save fewest guesses info.
+// var SAVE_FEWEST_GUESSES = 'SAVE_FEWEST_GUESSES';
+// var saveFewestGuesses = function() {
+// 	return {
+// 		type: SAVE_FEWEST_GUESSES
+// 	}
+// }
+// require('isomorphic-fetch');
 
+// var fetchGuesses = function() {
+//     return function(dispatch) {
+//         var url = '/fewest-guesses';
+//         return fetch(url).then(function(response) {
+// 			data
+//         })
+//     }
+// };
+
+// exports.fetchDescription = fetchDescription;
+
+// exports.FETCH_FEWEST_GUESSES = FETCH_FEWEST_GUESSES;
+// exports.fetchFewestGuesses = fetchFewestGuesses;
+// exports.SAVE_FEWEST_GUESSES = SAVE_FEWEST_GUESSES;
+// exports.saveFewestGuesses = saveFewestGuesses;
 exports.GEN_NUMBER = GEN_NUMBER;
 exports.genNumber = genNumber;
 exports.GUESS_NUMBER = GUESS_NUMBER;

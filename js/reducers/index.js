@@ -1,16 +1,17 @@
 var actions = require('../actions/index');
 
-var initialRepositoryState = {
+var initialState = {
     number: Math.floor((Math.random() * 100) + 1),
     guess: null,
     guesses: [],
     win: false,
     result: '',
-    count: 0
+    count: 0,
+    fewestGuesses: null
 };
 
 var hotColdReducer = function(state, action) {
-    var nextState = Object.assign({}, state || initialRepositoryState)
+    var nextState = Object.assign({}, state || initialState)
 
     if (action.type === actions.GUESS_NUMBER) {
         nextState.guess = action.guess;
@@ -18,7 +19,6 @@ var hotColdReducer = function(state, action) {
 
     else if (action.type === actions.COMPARE_GUESSES) {
         if (state.guesses.indexOf(parseInt(state.guess)) == -1) {
-            console.log('num not in guesses array, posting now');
             nextState.guesses = nextState.guesses.concat(parseInt(state.guess));
         } else {
             console.log('num exists already');
@@ -32,8 +32,12 @@ var hotColdReducer = function(state, action) {
     }
 
     else if (action.type === actions.EVAL_GUESS) {
+        // nextState.result = action.result;
         var diff = Math.abs(state.guess - state.number);
-        if (state.guess == state.number) {
+        if (state.guess > 100) {
+            nextState.error = true; 
+        }
+        else if (state.guess == state.number) {
             nextState.result = 'You Win!!!'
         }
         else if (diff > 20) {

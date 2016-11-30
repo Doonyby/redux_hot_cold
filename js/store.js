@@ -5,6 +5,6 @@ var thunk = require('redux-thunk').default;
 
 var reducers = require('./reducers/index');
 
-var store = createStore(reducers.hotColdReducer);
+var store = createStore(reducers.hotColdReducer, applyMiddleware(thunk));
 
 module.exports  = store;
